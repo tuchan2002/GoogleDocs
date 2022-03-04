@@ -1,0 +1,108 @@
+.document {
+    padding-bottom: 60px;
+    &-top {
+        @include flex-align-center-between;
+    }
+    &-title {
+        font-size: 16px;
+        font-weight: normal;
+    }
+    &-option {
+        @include flex-align-center(120px);
+    }
+    &-privacy {
+        @include flex-align-center(8px);
+        padding: 10px 15px;
+        transition: all 0.2s linear;
+        &:hover {
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #dee1e9;
+        }
+    }
+    &-setting {
+        @include flex-align-center(12px);
+        span {
+            @include flex-center;
+            @include circle(40px);
+            font-size: 18px;
+            transition: background-color 0.2s linear;
+            &:hover {
+                cursor: pointer;
+                background-color: $gray-blur;
+            }
+        }
+    }
+    &-main {
+        padding-top: 20px;
+    }
+    &-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+    &-item {
+        border-radius: 5px;
+        border: 1px solid $gray-blur;
+        transition: border 0.2s linear;
+        &:hover {
+            border-color: $blue;
+            cursor: pointer;
+        }
+        &-preview {
+            background-image: linear-gradient(#fff, #fafafa);
+            padding: 28px 20px 4px;
+            font-size: 13px;
+            line-height: 1.3;
+            height: 200px;
+            border-bottom: 1px solid $gray-blur;
+            p {
+                display: -webkit-box;
+                -webkit-line-clamp: 9;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                word-break: break-word;
+            }
+        }
+        &-info {
+            padding: 16px 20px 12px;
+        }
+        &-title {
+            font-weight: 500;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-word;
+        }
+        &-bottom {
+            @include flex-align-center-between;
+            gap: 8px;
+            margin-top: 4px;
+        }
+        &-time {
+            font-size: 13px;
+            color: $gray;
+            margin-right: auto;
+        }
+        &-icon {
+            width: 20px;
+            height: 20px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &-more {
+            @include flex-center;
+            @include circle(32px);
+            transition: background-color 0.2s linear;
+            &:hover {
+                cursor: pointer;
+                background-color: $gray-blur;
+            }
+        }
+    }
+}

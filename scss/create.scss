@@ -32,7 +32,7 @@
         }
     }
     &-main {
-        margin-top: 16px;
+        padding-top: 20px;
     }
     &-list {
         display: grid;
@@ -45,6 +45,7 @@
             border: 1px solid $gray-blur;
             transition: border 0.2s linear;
             &:hover {
+                cursor: pointer;
                 border-color: $blue-light;
             }
         }
