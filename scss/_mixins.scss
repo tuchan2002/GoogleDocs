@@ -1,0 +1,18 @@
+@mixin circle($radius: 0) {
+    width: $radius;
+    height: $radius;
+    border-radius: 100rem;
+}
+
+@mixin flex-center() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-align-center($gap: 0) {
+    display: flex;
+    align-items: center;
+    gap: $gap;
+}
+
