@@ -63,20 +63,19 @@ body {
 }
 
 .wrapper {
-  max-width: 1440px;
+  max-width: 1492px;
   margin: 0 auto;
 }
 
 .container {
-  max-width: 1140px;
-  padding: 0 20px;
+  max-width: 1100px;
+  padding: 20px;
   margin: 0 auto;
 }
 
 .header {
   display: flex;
   align-items: center;
-  gap: 0;
   justify-content: space-between;
   padding: 12px;
 }
@@ -170,6 +169,51 @@ body {
   height: 100%;
   border-radius: 100rem;
   object-fit: cover;
+}
+
+.create {
+  background-color: #f1f3f4;
+}
+.create-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.create-title {
+  font-size: 16px;
+  font-weight: normal;
+}
+.create-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.create-template {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  border-right: 2px solid #dee1e9;
+  transition: all 0.2s linear;
+}
+.create-template:hover {
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #dee1e9;
+}
+.create-setting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 100rem;
+  font-size: 20px;
+  transition: background-color 0.2s linear;
+}
+.create-setting:hover {
+  cursor: pointer;
+  background-color: #e3e5e6;
 }
 
 /*# sourceMappingURL=app.css.map */

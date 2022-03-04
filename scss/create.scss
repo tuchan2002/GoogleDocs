@@ -1,0 +1,37 @@
+.create {
+    background-color: $gray-light;
+    &-top {
+        @include flex-align-center-between;
+    }
+    &-title {
+        font-size: 16px;
+        font-weight: normal;
+    }
+    &-action {
+        @include flex-align-center(8px);
+    }
+    &-template {
+        @include flex-align-center(12px);
+        padding: 10px 15px;
+        border-right: 2px solid #dee1e9;
+        transition: all 0.2s linear;
+        &:hover {
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #dee1e9;
+        }
+    }
+    &-setting {
+        @include flex-center;
+        @include circle(40px);
+        font-size: 20px;
+        transition: background-color 0.2s linear;
+        &:hover {
+            cursor: pointer;
+            background-color: $gray-blur;
+        }
+    }
+    &-main {
+
+    }
+}

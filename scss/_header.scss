@@ -1,6 +1,5 @@
 .header {
-    @include flex-align-center(0);
-    justify-content: space-between;
+    @include flex-align-center-between;
     padding: 12px;
     &-left {
         @include flex-align-center(24px);
