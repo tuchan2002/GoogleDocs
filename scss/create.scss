@@ -43,6 +43,7 @@
         &-image {
             border-radius: 5px;
             border: 1px solid $gray-blur;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
             transition: border 0.2s linear;
             &:hover {
                 cursor: pointer;

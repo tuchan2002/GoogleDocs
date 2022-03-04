@@ -44,12 +44,14 @@
     &-item {
         border-radius: 5px;
         border: 1px solid $gray-blur;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         transition: border 0.2s linear;
         &:hover {
             border-color: $blue;
             cursor: pointer;
         }
         &-preview {
+            border-radius: 5px;
             background-image: linear-gradient(#fff, #fafafa);
             padding: 28px 20px 4px;
             font-size: 13px;
