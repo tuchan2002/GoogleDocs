@@ -32,6 +32,31 @@
         }
     }
     &-main {
-
+        margin-top: 16px;
+    }
+    &-list {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 20px;
+    }
+    &-item {
+        &-image {
+            border-radius: 5px;
+            border: 1px solid $gray-blur;
+            transition: border 0.2s linear;
+            &:hover {
+                border-color: $blue-light;
+            }
+        }
+        &-name {
+            font-weight: 500;
+            font-size: 15px;
+            margin-top: 12px;
+        }
+        &-desc {
+            font-size: 14px;
+            font-weight: 300;
+            margin-top: 4px;
+        }
     }
 }

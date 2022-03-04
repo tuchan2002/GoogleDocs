@@ -130,7 +130,7 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
-  max-width: 680px;
+  max-width: 650px;
   width: 100%;
   background-color: #f1f3f4;
   border-radius: 8px;
@@ -214,6 +214,32 @@ body {
 .create-setting:hover {
   cursor: pointer;
   background-color: #e3e5e6;
+}
+.create-main {
+  margin-top: 16px;
+}
+.create-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+.create-item-image {
+  border-radius: 5px;
+  border: 1px solid #e3e5e6;
+  transition: border 0.2s linear;
+}
+.create-item-image:hover {
+  border-color: #679fff;
+}
+.create-item-name {
+  font-weight: 500;
+  font-size: 15px;
+  margin-top: 12px;
+}
+.create-item-desc {
+  font-size: 14px;
+  font-weight: 300;
+  margin-top: 4px;
 }
 
 /*# sourceMappingURL=app.css.map */
