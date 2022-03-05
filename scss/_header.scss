@@ -1,6 +1,12 @@
 .header {
     @include flex-align-center-between;
     padding: 12px;
+    position: fixed;
+    background-color: #fff;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    left: 0;
     &-left {
         @include flex-align-center(24px);
     }
@@ -8,6 +14,7 @@
         @include flex-center;
         @include circle(40px);
         font-size: 20px;
+        color: $gray;
         transition: background-color 0.2s linear;
         &:hover {
             cursor: pointer;
@@ -16,6 +23,7 @@
     }
     &-logo {
         @include flex-align-center(8px);
+        width: 42px;
     }
     &-name {
         font-size: 22px;
@@ -50,6 +58,7 @@
     &-app {
         @include flex-center;
         @include circle(40px);
+        color: $gray;
         font-size: 20px;
         transition: background-color 0.2s linear;
         &:hover {
@@ -59,6 +68,7 @@
     }
     &-avatar {
         @include circle(40px);
+        padding: 3px;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
         &:hover {
             cursor: pointer;

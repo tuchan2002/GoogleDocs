@@ -1,5 +1,7 @@
 .create {
+    margin-top: 72px;
     background-color: $gray-light;
+    padding: 20px 0;
     &-top {
         @include flex-align-center-between;
     }

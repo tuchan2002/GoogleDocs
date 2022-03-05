@@ -1,3 +1,4 @@
+include ./views/mixins
 doctype html
 html(lang="en")
     head
@@ -15,3 +16,6 @@ html(lang="en")
             include ./views/header
             include ./views/create
             include ./views/document
+            .add-btn 
+                img(src="./images/plus.png", alt="")
+        script(src="./js/app.js") 

@@ -1,0 +1,12 @@
+mixin documentItem(desc, title, time) 
+    li.document-item
+        .document-item-preview 
+            p= desc
+        .document-item-info 
+            p.document-item-title= title
+            .document-item-bottom
+                .document-item-icon
+                    img(src="./images/docs_icon.png", alt="")
+                p.document-item-time= time
+                span.document-item-more
+                    i.ti-more

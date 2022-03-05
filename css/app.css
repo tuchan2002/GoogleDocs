@@ -69,8 +69,29 @@ body {
 
 .container {
   max-width: 1100px;
-  padding: 20px;
+  padding: 0 20px;
   margin: 0 auto;
+}
+
+.add-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 100rem;
+  position: fixed;
+  background-color: #fff;
+  bottom: 28px;
+  right: 28px;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 12px;
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.add-btn.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .header {
@@ -78,6 +99,12 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 12px;
+  position: fixed;
+  background-color: #fff;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  left: 0;
 }
 .header-left {
   display: flex;
@@ -92,6 +119,7 @@ body {
   height: 40px;
   border-radius: 100rem;
   font-size: 20px;
+  color: #5f6368;
   transition: background-color 0.2s linear;
 }
 .header-toggle:hover {
@@ -102,6 +130,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  width: 42px;
 }
 .header-name {
   font-size: 22px;
@@ -148,6 +177,7 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 100rem;
+  color: #5f6368;
   font-size: 20px;
   transition: background-color 0.2s linear;
 }
@@ -159,6 +189,7 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 100rem;
+  padding: 3px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 .header-avatar:hover {
@@ -172,7 +203,9 @@ body {
 }
 
 .create {
+  margin-top: 72px;
   background-color: #f1f3f4;
+  padding: 20px 0;
 }
 .create-top {
   display: flex;
@@ -245,12 +278,26 @@ body {
 }
 
 .document {
-  padding-bottom: 60px;
+  padding-bottom: 70px;
+  background-color: #fff;
+}
+.document-container-top {
+  background-color: #fff;
+}
+.document-container-top.active {
+  position: fixed;
+  z-index: 100;
+  top: 72px;
+  left: 0;
+  right: 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 }
 .document-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 16px;
+  padding-bottom: 10px;
 }
 .document-title {
   font-size: 16px;
@@ -293,7 +340,7 @@ body {
   background-color: #e3e5e6;
 }
 .document-main {
-  padding-top: 20px;
+  padding-top: 10px;
 }
 .document-list {
   display: grid;

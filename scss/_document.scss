@@ -1,7 +1,21 @@
 .document {
-    padding-bottom: 60px;
+    padding-bottom: 70px;
+    background-color: #fff;
+    &-container-top {
+        background-color: #fff;
+    }
+    &-container-top.active {
+        position: fixed;
+        z-index: 100;
+        top: 72px;
+        left: 0;
+        right: 0;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    }
     &-top {
         @include flex-align-center-between;
+        padding-top: 16px;
+        padding-bottom: 10px;
     }
     &-title {
         font-size: 16px;
@@ -34,7 +48,7 @@
         }
     }
     &-main {
-        padding-top: 20px;
+        padding-top: 10px;
     }
     &-list {
         display: grid;

@@ -1,64 +1,35 @@
 section.document
+    .document-container-top 
+        .container
+            .document-top 
+                h2.document-title Recent documents
+                .document-option
+                    .document-privacy
+                        span Owned by me
+                        i.ti-angle-down
+                    .document-setting 
+                        span.document-view
+                            i.ti-view-list-alt
+                        span.document-sort
+                            i.ti-layout-list-thumb
+                        span.document-folder
+                            i.ti-folder
     .container
-        .document-top 
-            h2.document-title Recent documents
-            .document-option
-                .document-privacy
-                    span Owned by me
-                    i.ti-angle-down
-                .document-setting 
-                    span.document-view
-                        i.ti-view-list-alt
-                    span.document-sort
-                        i.ti-layout-list-thumb
-                    span.document-folder
-                        i.ti-folder
         .document-main 
             ul.document-list
-                li.document-item
-                    .document-item-preview 
-                        p React (also known as React.js or ReactJS) is a free and open-source front-end JavaScript library for building user interfaces based on UI components. It is maintained by Meta (formerly Facebook) and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications.
-                    .document-item-info 
-                        p.document-item-title ReactJS Basic
-                        .document-item-bottom
-                            .document-item-icon
-                                img(src="./images/docs_icon.png", alt="")
-                            p.document-item-time Opened Mar 1, 2022
-                            span.document-item-more
-                                i.ti-more
-                li.document-item
-                    .document-item-preview 
-                        p React (also known as React.js or ReactJS) is a free and open-source front-end JavaScript library for building user interfaces based on UI components.
-                    .document-item-info 
-                        p.document-item-title ReactJS Basic
-                        .document-item-bottom
-                            .document-item-icon
-                                img(src="./images/docs_icon.png", alt="")
-                            p.document-item-time Opened Mar 1, 2022
-                            span.document-item-more
-                                i.ti-more
-                li.document-item
-                    .document-item-preview 
-                        p React (also known as React.js or ReactJS) is a free and open-source front-end JavaScript library for building user interfaces based on UI components.
-                    .document-item-info 
-                        p.document-item-title ReactJS Basic
-                        .document-item-bottom
-                            .document-item-icon
-                                img(src="./images/docs_icon.png", alt="")
-                            p.document-item-time Opened Mar 1, 2022
-                            span.document-item-more
-                                i.ti-more
-                li.document-item
-                    .document-item-preview 
-                        p React (also known as React.js or ReactJS) is a free and open-source front-end JavaScript library for building user interfaces based on UI components.
-                    .document-item-info 
-                        p.document-item-title ReactJS Basic
-                        .document-item-bottom
-                            .document-item-icon
-                                img(src="./images/docs_icon.png", alt="")
-                            p.document-item-time Opened Mar 1, 2022
-                            span.document-item-more
-                                i.ti-more
+                +documentItem("React (also known as React.js or ReactJS) is a free and open-source front-end JavaScript library for building user interfaces based on UI components. It is maintained by Meta (formerly Facebook) and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications.", "ReactJS", "Opened Mar 1, 2022")
+                +documentItem("Vue.js, gọi tắt là Vue, là một framework linh động dùng để xây dựng giao diện người dùng (user interfaces - UI). Khác với các framework nguyên khối, Vue được thiết kế từ đầu theo hướng cho phép và khuyến khích việc phát triển ứng dụng theo các bước.", "VueJs", "Opened Mar 1, 2022")
+                +documentItem("Express.js, or simply Express, is a back end web application framework for Node.js, released as free and open-source software under the MIT License.", "ExpressJS", "Opened Mar 1, 2022")
+                +documentItem("React (also known as React.js or ReactJS) is a free and open-source front-end JavaScript library for building user interfaces based on UI components. It is maintained by Meta (formerly Facebook) and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications.", "ReactJS", "Opened Mar 1, 2022")
+                +documentItem("Vue.js, gọi tắt là Vue, là một framework linh động dùng để xây dựng giao diện người dùng (user interfaces - UI). Khác với các framework nguyên khối, Vue được thiết kế từ đầu theo hướng cho phép và khuyến khích việc phát triển ứng dụng theo các bước.", "VueJs", "Opened Mar 1, 2022")
+                +documentItem("Express.js, or simply Express, is a back end web application framework for Node.js, released as free and open-source software under the MIT License.", "ExpressJS", "Opened Mar 1, 2022")
+                +documentItem("React (also known as React.js or ReactJS) is a free and open-source front-end JavaScript library for building user interfaces based on UI components. It is maintained by Meta (formerly Facebook) and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications.", "ReactJS", "Opened Mar 1, 2022")
+                +documentItem("Vue.js, gọi tắt là Vue, là một framework linh động dùng để xây dựng giao diện người dùng (user interfaces - UI). Khác với các framework nguyên khối, Vue được thiết kế từ đầu theo hướng cho phép và khuyến khích việc phát triển ứng dụng theo các bước.", "VueJs", "Opened Mar 1, 2022")
+                +documentItem("Express.js, or simply Express, is a back end web application framework for Node.js, released as free and open-source software under the MIT License.", "ExpressJS", "Opened Mar 1, 2022")
+                +documentItem("React (also known as React.js or ReactJS) is a free and open-source front-end JavaScript library for building user interfaces based on UI components. It is maintained by Meta (formerly Facebook) and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications.", "ReactJS", "Opened Mar 1, 2022")
+                +documentItem("Vue.js, gọi tắt là Vue, là một framework linh động dùng để xây dựng giao diện người dùng (user interfaces - UI). Khác với các framework nguyên khối, Vue được thiết kế từ đầu theo hướng cho phép và khuyến khích việc phát triển ứng dụng theo các bước.", "VueJs", "Opened Mar 1, 2022")
+                +documentItem("Express.js, or simply Express, is a back end web application framework for Node.js, released as free and open-source software under the MIT License.", "ExpressJS", "Opened Mar 1, 2022")
+                
                 
 
 

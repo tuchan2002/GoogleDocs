@@ -11,6 +11,24 @@ body {
 
 .container {
     max-width: 1100px;
-    padding: 20px;
+    padding: 0 20px;
     margin: 0 auto;
+}
+
+.add-btn {
+    @include circle(56px);
+    position: fixed;
+    background-color: #fff;
+    bottom: 28px;
+    right: 28px;
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 12px;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    transition: all 0.2s linear;
+}
+.add-btn.active {
+    opacity: 1;
+    visibility: visible;
 }
