@@ -70,9 +70,7 @@
         @include circle(40px);
         padding: 3px;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-        &:hover {
-            cursor: pointer;
-        }
+        cursor: pointer;
         img {
             @include circle(100%);
             object-fit: cover;

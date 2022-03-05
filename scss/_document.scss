@@ -65,16 +65,16 @@
             cursor: pointer;
         }
         &-preview {
-            border-radius: 5px;
+            border-radius: 5px 5px 0 0;
             background-image: linear-gradient(#fff, #fafafa);
             padding: 28px 20px 4px;
-            font-size: 13px;
-            line-height: 1.3;
+            font-size: 11px;
+            line-height: 1.4;
             height: 200px;
             border-bottom: 1px solid $gray-blur;
             p {
                 display: -webkit-box;
-                -webkit-line-clamp: 9;
+                -webkit-line-clamp: 10;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
                 text-overflow: ellipsis;

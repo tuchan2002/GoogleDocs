@@ -11,11 +11,15 @@ html(lang="en")
         link(href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet")
         link(rel="stylesheet" href="./fonts/themify-icons/themify-icons.css")
         link(rel="stylesheet", href="./css/app.css")
+        script(src="https://cdn.tiny.cloud/1/8q32i5i1oyxnqq3otqhgc9213fcq32ie12geonhjeyyvte7t/tinymce/5/tinymce.min.js" referrerpolicy="origin")
     body 
         .wrapper 
+            .add-btn 
+                img(src="./images/plus.png", alt="")
             include ./views/header
             include ./views/create
             include ./views/document
-            .add-btn 
-                img(src="./images/plus.png", alt="")
+            include ./views/edit
+
+        script(src="./js/tinymce.js") 
         script(src="./js/app.js") 

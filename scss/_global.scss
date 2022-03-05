@@ -4,6 +4,11 @@ body {
     line-height: 1;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+
+}
+
 .wrapper {
     max-width: 1492px;
     margin: 0 auto;
@@ -20,7 +25,7 @@ body {
     position: fixed;
     background-color: #fff;
     bottom: 28px;
-    right: 28px;
+    right: 56px;
     padding: 15px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 12px;
     opacity: 0;

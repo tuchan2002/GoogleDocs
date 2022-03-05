@@ -6,6 +6,9 @@ const sectionCreate = $(".create");
 const documentContainerTop = $(".document-container-top");
 const documentMain = $(".document-main");
 const addBtn = $(".add-btn");
+const editLogo = $(".edit-logo");
+const editSection = $(".edit");
+const createItemBlank = $(".create-item-image");
 
 const sectionCreateHeight = sectionCreate.offsetHeight;
 const documentContainerTopHeight = documentContainerTop.offsetHeight;
@@ -26,6 +29,31 @@ const app = (function () {
                 }
             };
             window.addEventListener("scroll", handleScroll);
+
+            // handle open/close editSection
+            const handleOpenEditSection = () => {
+                editSection.classList.add("active");
+                const body = document.body;
+                body.style.height = '100vh';
+                body.style.overflowY = 'hidden';
+            };
+            const handleCloseEditSection = () => {
+                editSection.classList.remove("active");
+                const body = document.body;
+                body.style.height = '';
+                body.style.overflowY = '';
+            };
+            editLogo.onclick = () => {
+                handleCloseEditSection();
+            };
+            createItemBlank.onclick = () => {
+                handleOpenEditSection();
+            };
+            addBtn.onclick = () => {
+                handleOpenEditSection();
+            };
+
+
         },
         init() {
             this.handleEvents();

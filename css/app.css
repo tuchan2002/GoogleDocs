@@ -62,6 +62,10 @@ body {
   line-height: 1;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .wrapper {
   max-width: 1492px;
   margin: 0 auto;
@@ -80,7 +84,7 @@ body {
   position: fixed;
   background-color: #fff;
   bottom: 28px;
-  right: 28px;
+  right: 56px;
   padding: 15px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 12px;
   opacity: 0;
@@ -191,8 +195,6 @@ body {
   border-radius: 100rem;
   padding: 3px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-}
-.header-avatar:hover {
   cursor: pointer;
 }
 .header-avatar img {
@@ -358,17 +360,17 @@ body {
   cursor: pointer;
 }
 .document-item-preview {
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
   background-image: linear-gradient(#fff, #fafafa);
   padding: 28px 20px 4px;
-  font-size: 13px;
-  line-height: 1.3;
+  font-size: 11px;
+  line-height: 1.4;
   height: 200px;
   border-bottom: 1px solid #e3e5e6;
 }
 .document-item-preview p {
   display: -webkit-box;
-  -webkit-line-clamp: 9;
+  -webkit-line-clamp: 10;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -416,6 +418,109 @@ body {
   transition: background-color 0.2s linear;
 }
 .document-item-more:hover {
+  cursor: pointer;
+  background-color: #e3e5e6;
+}
+
+.edit {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
+  background-color: #fff;
+  padding-bottom: 70px;
+  transform: translateX(100%);
+  transition: transform 0.5s linear;
+}
+.edit.active {
+  transform: translateX(0);
+}
+.edit-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  position: relative;
+}
+.edit-top::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.edit-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.edit-time {
+  color: #5f6368;
+  text-decoration: underline;
+  font-size: 14px;
+}
+.edit-logo {
+  width: 40px;
+}
+.edit-title {
+  font-size: 18px;
+  border-radius: 2px;
+  padding: 0 12px 0 4px;
+  margin-bottom: 12px;
+  width: 320px;
+}
+.edit-title:hover {
+  outline: 1px solid rgba(0, 0, 0, 0.2);
+}
+.edit-title:focus {
+  outline: 2px solid #1a73e8;
+}
+.edit-right {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.edit-share {
+  border-radius: 4px;
+  height: 36px;
+  background-color: #1a73e8;
+  padding: 9px 16px 10px 12px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.edit-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 100rem;
+  padding: 3px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  cursor: pointer;
+}
+.edit-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100rem;
+  object-fit: cover;
+}
+.edit-history {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 100rem;
+  font-size: 20px;
+  transition: background-color 0.2s linear;
+}
+.edit-history:hover {
   cursor: pointer;
   background-color: #e3e5e6;
 }
