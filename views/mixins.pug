@@ -8,5 +8,16 @@ mixin documentItem(desc, title, time)
                 .document-item-icon
                     img(src="./images/docs_icon.png", alt="")
                 p.document-item-time= time
-                span.document-item-more
-                    i.ti-more
+                .document-dropdown
+                    span.document-item-more
+                        i.ti-more
+                    ul.document-dropdown-list
+                        li.document-dropdown-item
+                            i.ti-smallcap
+                            span Rename
+                        li.document-dropdown-item
+                            i.ti-trash
+                            span Remove
+                        li.document-dropdown-item
+                            i.ti-new-window
+                            span Open in new tab

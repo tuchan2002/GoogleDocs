@@ -83,6 +83,7 @@
         }
         &-info {
             padding: 16px 20px 12px;
+            position: relative;
         }
         &-title {
             font-weight: 500;
@@ -119,6 +120,38 @@
                 cursor: pointer;
                 background-color: $gray-blur;
             }
+        }
+    }
+    &-dropdown {
+        &-list {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            transform: translate(50%, -36%);
+            background-color: #fff;
+            padding: 8px 0;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 10;
+            transition: all 0.3s linear;
+        }
+        &-item {
+            @include flex-align-center(24px);
+            padding: 10px 30px 10px 20px;
+            font-size: 20px;
+            white-space: nowrap;
+            span {
+                font-size: 14px;
+            }
+            &:hover {
+                background-color: $gray-light;
+            }
+        }
+        &:hover &-list {
+            opacity: 1;
+            visibility: visible;
         }
     }
 }
