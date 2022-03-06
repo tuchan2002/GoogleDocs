@@ -98,6 +98,92 @@ body::-webkit-scrollbar {
   visibility: visible;
 }
 
+.popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 10000;
+  transition: all 0.3s ease;
+}
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 26px;
+  position: absolute;
+  border-radius: 8px;
+  padding: 30px 42px;
+  background-color: #fff;
+  width: 430px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
+  transition: all 0.3s ease;
+}
+.popup-title {
+  font-size: 22px;
+  font-weight: 400;
+}
+.popup-desc {
+  color: #5f6368;
+}
+.popup-input {
+  outline: 1px solid #5f6368;
+  border-radius: 3px;
+  padding: 3px 8px;
+  font-size: 14px;
+}
+.popup-input:focus {
+  outline-color: #1a73e8;
+}
+.popup-btn-group {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.popup-cancel {
+  border: 1px solid #e3e5e6;
+  border-radius: 4px;
+  padding: 11px 24px;
+  color: #1a73e8;
+  background-color: #fff;
+  cursor: pointer;
+}
+.popup-cancel:hover {
+  color: #5f6368;
+}
+.popup-confirm {
+  border-radius: 4px;
+  padding: 11px 30px;
+  background-color: #1a73e8;
+  color: #fff;
+  cursor: pointer;
+}
+.popup-confirm:hover {
+  background-color: #2b7de9;
+}
+.popup-confirm.disabled {
+  pointer-events: none;
+  background-color: black;
+}
+
+.popup.open-popup {
+  opacity: 1;
+  visibility: visible;
+}
+
+.open-popup .popup-container {
+  transform: translate(-50%, -50%) scale(1);
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -516,11 +602,11 @@ body::-webkit-scrollbar {
   align-items: center;
   gap: 28px;
 }
-.edit-share {
+.edit-save {
   border-radius: 4px;
   height: 36px;
   background-color: #1a73e8;
-  padding: 9px 16px 10px 12px;
+  padding: 9px 18px 10px 14px;
   color: #fff;
   display: flex;
   align-items: center;
@@ -529,7 +615,7 @@ body::-webkit-scrollbar {
   font-weight: 500;
   cursor: pointer;
 }
-.edit-share:hover {
+.edit-save:hover {
   background-color: #2b7de9;
 }
 .edit-avatar {

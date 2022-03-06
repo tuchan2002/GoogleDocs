@@ -52,11 +52,11 @@
     &-right {
         @include flex-align-center(28px);
     }
-    &-share {
+    &-save {
         border-radius: 4px;
         height: 36px;
         background-color: $blue;
-        padding: 9px 16px 10px 12px;
+        padding: 9px 18px 10px 14px;
         color: #fff;
         @include flex-align-center(8px);
         font-size: 14px;

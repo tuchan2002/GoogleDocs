@@ -16,6 +16,14 @@ html(lang="en")
         .wrapper 
             .add-btn 
                 img(src="./images/plus.png", alt="")
+            .popup 
+                .popup-container 
+                    h3.popup-title Rename 
+                    p.popup-desc Please enter a new name for the item:
+                    input.popup-input(type="text")
+                    .popup-btn-group 
+                        button.popup-cancel Cancel
+                        button.popup-confirm OK
             include ./views/header
             include ./views/create
             include ./views/document

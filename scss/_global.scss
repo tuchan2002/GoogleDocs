@@ -6,7 +6,6 @@ body {
 
 body::-webkit-scrollbar {
     display: none;
-
 }
 
 .wrapper {
@@ -36,4 +35,83 @@ body::-webkit-scrollbar {
 .add-btn.active {
     opacity: 1;
     visibility: visible;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 10000;
+    transition: all 0.3s ease;
+    &-container {
+        @include flex-column-justify-center(26px);
+        position: absolute;
+        border-radius: 8px;
+        padding: 30px 42px;
+        background-color: #fff;
+        width: 430px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.2);
+        transition: all 0.3s ease;
+    }
+    &-title {
+        font-size: 22px;
+        font-weight: 400;
+    }
+    &-desc {
+        color: $gray;
+    }
+    &-input {
+        outline: 1px solid $gray;
+        border-radius: 3px;
+        padding: 3px 8px;
+        font-size: 14px;
+        &:focus {
+            outline-color: $blue;
+        }
+    }
+    &-btn-group {
+        margin-left: auto;
+        @include flex-align-center(18px);
+        font-size: 14px;
+        font-weight: 600;
+    }
+    &-cancel {
+        border: 1px solid $gray-blur;
+        border-radius: 4px;
+        padding: 11px 24px;
+        color: $blue;
+        background-color: #fff;
+        cursor: pointer;
+        &:hover {
+            color: $gray;
+        }
+    }
+    &-confirm {
+        border-radius: 4px;
+        padding: 11px 30px;
+        background-color: $blue;
+        color: #fff;
+        cursor: pointer;
+        &:hover {
+            background-color: #2b7de9;
+        }
+    }
+    &-confirm.disabled {
+        pointer-events: none;
+        background-color: black;
+    }
+}
+.popup.open-popup {
+    opacity: 1;
+    visibility: visible;
+}
+.open-popup .popup-container {
+    transform: translate(-50%, -50%) scale(1);
 }

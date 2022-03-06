@@ -14,14 +14,19 @@ window.onload = function () {
         const editSection = $(".edit");
         const createItemBlank = $(".create-item-image");
         const documentList = $(".document-list");
-        const shareBtn = $(".edit-share");
+        const saveBtn = $(".edit-save");
         const titleInput = $(".edit-title");
+        const popup = $(".popup");
+        const popupCancel = $(".popup-cancel");
+        const popupConfirm = $(".popup-confirm");
+        const popupInput = $(".popup-input");
 
         const sectionCreateHeight = sectionCreate.offsetHeight;
         const documentContainerTopHeight = documentContainerTop.offsetHeight;
 
         let action = ADD_DOCS;
         let editIndex = 0;
+        let updateTitleIndex = 0;
 
         return {
             insertDocument(title, desc, time) {
@@ -45,6 +50,12 @@ window.onload = function () {
                 listDocs = JSON.parse(getLocalStorage);
                 listDocs[index].title = title;
                 listDocs[index].desc = desc;
+                localStorage.setItem("Docs", JSON.stringify(listDocs));
+            },
+            updateTitle(index, title) {
+                let getLocalStorage = localStorage.getItem("Docs");
+                listDocs = JSON.parse(getLocalStorage);
+                listDocs[index].title = title;
                 localStorage.setItem("Docs", JSON.stringify(listDocs));
             },
             clearInputValue() {
@@ -98,7 +109,7 @@ window.onload = function () {
                 };
 
                 // handle insert docs
-                shareBtn.onclick = () => {
+                saveBtn.onclick = () => {
                     let title =
                         titleInput.value.trim() === ""
                             ? "Untitled document"
@@ -113,6 +124,7 @@ window.onload = function () {
                     }
 
                     handleCloseEditSection();
+                    this.clearInputValue();
                     this.render();
                 };
 
@@ -129,13 +141,20 @@ window.onload = function () {
                     }
 
                     // handle rename
-                    // const renameItem = e.target.closest(
-                    //     ".document-item-rename"
-                    // );
-                    // if (renameItem) {
-                    //     let index = renameItem.getAttribute("data-index");
-                    // }
+                    const renameItem = e.target.closest(
+                        ".document-item-rename"
+                    );
+                    if (renameItem) {
+                        // open popup
+                        popup.classList.add("open-popup");
+                        popupInput.value = renameItem
+                            .closest(".document-item")
+                            .querySelector(".document-item-title").textContent;
+                        updateTitleIndex =
+                            renameItem.getAttribute("data-index");
+                    }
 
+                    // open document item
                     const documentItem = e.target.closest(".document-item");
                     if (
                         documentItem &&
@@ -147,16 +166,29 @@ window.onload = function () {
                     }
 
                     // handle click open in new tab
-                    const openInNewTabItem = e.target.closest('.document-item-open')
-                    if(openInNewTabItem) {
+                    const openInNewTabItem = e.target.closest(
+                        ".document-item-open"
+                    );
+                    if (openInNewTabItem) {
                         editIndex = openInNewTabItem.getAttribute("data-index");
                         openEditDocument(editIndex);
                         action = EDIT_DOCS;
                     }
                 };
+
+                // close popup
+                popupCancel.onclick = () => {
+                    popup.classList.remove("open-popup");
+                };
+                popupConfirm.onclick = () => {
+                    if(popupInput.value.trim() !== '') {
+                        popup.classList.remove("open-popup");
+                        this.updateTitle(updateTitleIndex, popupInput.value.trim());
+                        this.render();
+                    }
+                };
             },
             render() {
-                const _this = this;
                 let getLocalStorage = localStorage.getItem("Docs");
                 if (getLocalStorage == null) {
                     listDocs = [];
