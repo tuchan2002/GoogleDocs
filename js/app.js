@@ -81,6 +81,7 @@ window.onload = function () {
                 };
                 editLogo.onclick = () => {
                     handleCloseEditSection();
+                    this.clearInputValue();
                 };
                 createItemBlank.onclick = () => {
                     handleOpenEditSection();
@@ -112,7 +113,6 @@ window.onload = function () {
                     }
 
                     handleCloseEditSection();
-                    this.clearInputValue();
                     this.render();
                 };
 
@@ -145,6 +145,14 @@ window.onload = function () {
                         openEditDocument(editIndex);
                         action = EDIT_DOCS;
                     }
+
+                    // handle click open in new tab
+                    const openInNewTabItem = e.target.closest('.document-item-open')
+                    if(openInNewTabItem) {
+                        editIndex = openInNewTabItem.getAttribute("data-index");
+                        openEditDocument(editIndex);
+                        action = EDIT_DOCS;
+                    }
                 };
             },
             render() {
@@ -171,7 +179,7 @@ window.onload = function () {
                                         <ul class="document-dropdown-list">
                                             <li class="document-dropdown-item document-item-rename" data-index="${index}"><i class="ti-smallcap"></i><span>Rename</span></li>
                                             <li class="document-dropdown-item document-item-remove" data-index="${index}"><i class="ti-trash"></i><span>Remove</span></li>
-                                            <li class="document-dropdown-item"><i class="ti-new-window"></i><span>Open in new tab</span></li>
+                                            <li class="document-dropdown-item document-item-open" data-index="${index}"><i class="ti-new-window"></i><span>Open in new tab</span></li>
                                         </ul>
                                     </div>
                                 </div>

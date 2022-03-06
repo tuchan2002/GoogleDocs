@@ -8,7 +8,7 @@
     background-color: #fff;
     padding-bottom: 70px;
     transform: translateX(100%);
-    transition: transform 0.3s linear;
+    transition: transform 0.25s linear;
     &.active {
         transform: translateX(0);
     }
