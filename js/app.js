@@ -72,6 +72,14 @@ window.onload = function () {
                 }
                 return false;
             },
+            isData() {
+                let currentTitle = titleInput.value;
+                let currentDesc = tinyMCE.get("content").getContent();
+                if (!(currentTitle === "" && currentDesc === "")) {
+                    return true;
+                }
+                return false;
+            },
             clearInputValue() {
                 titleInput.value = "";
                 tinyMCE.get("content").setContent("");
@@ -105,7 +113,9 @@ window.onload = function () {
                     body.style.overflowY = "";
                 };
                 editLogo.onclick = () => {
-                    if (this.isDataChange(editIndex) && action === EDIT_DOCS) {
+                    if (action === EDIT_DOCS && this.isDataChange(editIndex)) {
+                        popupSave.classList.add("open-popup");
+                    } else if (action === ADD_DOCS && this.isData()) {
                         popupSave.classList.add("open-popup");
                     } else {
                         handleCloseEditSection();

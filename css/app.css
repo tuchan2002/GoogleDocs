@@ -474,6 +474,7 @@ body::-webkit-scrollbar {
   position: relative;
 }
 .document-item-title {
+  padding-bottom: 4px;
   font-weight: 500;
   display: -webkit-box;
   -webkit-line-clamp: 1;
@@ -487,7 +488,6 @@ body::-webkit-scrollbar {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  margin-top: 4px;
 }
 .document-item-time {
   font-size: 13px;
