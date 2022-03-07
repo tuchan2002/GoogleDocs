@@ -21,3 +21,15 @@ mixin documentItem(desc, title, time)
                         li.document-dropdown-item
                             i.ti-new-window
                             span Open in new tab
+mixin popup(title, desc, cancel, confirm, hasInput= false)
+    .popup 
+        .popup-container 
+            h3.popup-title= title 
+            p.popup-desc= desc
+            if hasInput
+                input.popup-input(type="text")
+            .popup-btn-group 
+                button.popup-cancel= cancel
+                if !hasInput 
+                    button.popup-no Don't Save 
+                button.popup-confirm= confirm

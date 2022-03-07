@@ -145,7 +145,7 @@ body::-webkit-scrollbar {
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 15px;
   font-size: 14px;
   font-weight: 600;
 }
@@ -170,17 +170,24 @@ body::-webkit-scrollbar {
 .popup-confirm:hover {
   background-color: #2b7de9;
 }
-.popup-confirm.disabled {
-  pointer-events: none;
-  background-color: black;
+.popup-no {
+  border: 1px solid #e3e5e6;
+  border-radius: 4px;
+  padding: 11px 14px;
+  color: #1a73e8;
+  background-color: #fff;
+  cursor: pointer;
+}
+.popup-no:hover {
+  color: #5f6368;
 }
 
-.popup.open-popup {
+.open-popup .popup {
   opacity: 1;
   visibility: visible;
 }
 
-.open-popup .popup-container {
+.open-popup .popup .popup-container {
   transform: translate(-50%, -50%) scale(1);
 }
 

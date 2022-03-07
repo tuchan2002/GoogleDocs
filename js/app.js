@@ -16,10 +16,12 @@ window.onload = function () {
         const documentList = $(".document-list");
         const saveBtn = $(".edit-save");
         const titleInput = $(".edit-title");
-        const popup = $(".popup");
-        const popupCancel = $(".popup-cancel");
-        const popupConfirm = $(".popup-confirm");
+        const popupRename = $(".popup-rename");
+        const popupCancel = $$(".popup-cancel");
+        const popupConfirm = $$(".popup-confirm");
         const popupInput = $(".popup-input");
+        const popupSave = $(".popup-save");
+        const popupNo = $(".popup-no");
 
         const sectionCreateHeight = sectionCreate.offsetHeight;
         const documentContainerTopHeight = documentContainerTop.offsetHeight;
@@ -58,6 +60,18 @@ window.onload = function () {
                 listDocs[index].title = title;
                 localStorage.setItem("Docs", JSON.stringify(listDocs));
             },
+            isDataChange(index) {
+                let getLocalStorage = localStorage.getItem("Docs");
+                listDocs = JSON.parse(getLocalStorage);
+                let title = listDocs[index].title;
+                let desc = listDocs[index].desc;
+                let currentTitle = titleInput.value;
+                let currentDesc = tinyMCE.get("content").getContent();
+                if (!(title === currentTitle && desc === currentDesc)) {
+                    return true;
+                }
+                return false;
+            },
             clearInputValue() {
                 titleInput.value = "";
                 tinyMCE.get("content").setContent("");
@@ -91,8 +105,12 @@ window.onload = function () {
                     body.style.overflowY = "";
                 };
                 editLogo.onclick = () => {
-                    handleCloseEditSection();
-                    this.clearInputValue();
+                    if (this.isDataChange(editIndex) && action === EDIT_DOCS) {
+                        popupSave.classList.add("open-popup");
+                    } else {
+                        handleCloseEditSection();
+                        this.clearInputValue();
+                    }
                 };
                 createItemBlank.onclick = () => {
                     handleOpenEditSection();
@@ -123,6 +141,7 @@ window.onload = function () {
                         this.editDocument(editIndex, title, desc);
                     }
 
+                    popupSave.classList.remove("open-popup");
                     handleCloseEditSection();
                     this.clearInputValue();
                     this.render();
@@ -145,8 +164,8 @@ window.onload = function () {
                         ".document-item-rename"
                     );
                     if (renameItem) {
-                        // open popup
-                        popup.classList.add("open-popup");
+                        // open popup rename
+                        popupRename.classList.add("open-popup");
                         popupInput.value = renameItem
                             .closest(".document-item")
                             .querySelector(".document-item-title").textContent;
@@ -177,15 +196,32 @@ window.onload = function () {
                 };
 
                 // close popup
-                popupCancel.onclick = () => {
-                    popup.classList.remove("open-popup");
+                popupCancel[0].onclick = () => {
+                    popupRename.classList.remove("open-popup");
                 };
-                popupConfirm.onclick = () => {
-                    if(popupInput.value.trim() !== '') {
-                        popup.classList.remove("open-popup");
-                        this.updateTitle(updateTitleIndex, popupInput.value.trim());
+                popupCancel[1].onclick = () => {
+                    popupSave.classList.remove("open-popup");
+                };
+
+                popupConfirm[0].onclick = () => {
+                    if (popupInput.value.trim() !== "") {
+                        popupRename.classList.remove("open-popup");
+                        this.updateTitle(
+                            updateTitleIndex,
+                            popupInput.value.trim()
+                        );
                         this.render();
+                    } else {
+                        popupInput.focus();
                     }
+                };
+                popupConfirm[1].onclick = () => {
+                    saveBtn.click();
+                };
+                popupNo.onclick = () => {
+                    popupSave.classList.remove("open-popup");
+                    handleCloseEditSection();
+                    this.clearInputValue();
                 };
             },
             render() {

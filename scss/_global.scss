@@ -78,7 +78,7 @@ body::-webkit-scrollbar {
     }
     &-btn-group {
         margin-left: auto;
-        @include flex-align-center(18px);
+        @include flex-align-center(15px);
         font-size: 14px;
         font-weight: 600;
     }
@@ -103,15 +103,22 @@ body::-webkit-scrollbar {
             background-color: #2b7de9;
         }
     }
-    &-confirm.disabled {
-        pointer-events: none;
-        background-color: black;
+    &-no {
+        border: 1px solid $gray-blur;
+        border-radius: 4px;
+        padding: 11px 14px;
+        color: $blue;
+        background-color: #fff;
+        cursor: pointer;
+        &:hover {
+            color: $gray;
+        }
     }
 }
-.popup.open-popup {
+.open-popup .popup {
     opacity: 1;
     visibility: visible;
 }
-.open-popup .popup-container {
+.open-popup .popup .popup-container {
     transform: translate(-50%, -50%) scale(1);
 }
