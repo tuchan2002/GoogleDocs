@@ -29,9 +29,10 @@
         @include flex-align-center(12px);
     }
     &-time {
+        margin-top: auto;
         color: $gray;
         text-decoration: underline;
-        font-size: 14px;
+        font-size: 15px;
     }
     &-logo {
         width: 40px;
@@ -40,13 +41,26 @@
         font-size: 18px;
         border-radius: 2px;
         padding: 0 12px 0 4px;
-        margin-bottom: 12px;
+        margin-bottom: 6px;
         width: 320px;
         &:hover {
             outline: 1px solid rgba(0, 0, 0, 0.2);
         }
         &:focus {
             outline: 2px solid $blue;
+        }
+    }
+    &-action {
+        @include flex-align-center(20px);
+        font-size: 17px;
+        &-item {
+            @include flex-center;
+            padding: 4px;
+            border-radius: 5px;
+            cursor: pointer;
+            &:hover {
+                background-color: $gray-light;
+            }
         }
     }
     &-right {

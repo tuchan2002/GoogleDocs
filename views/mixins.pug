@@ -14,14 +14,14 @@ mixin documentItem(desc, title, time)
                     ul.document-dropdown-list
                         li.document-dropdown-item
                             i.ti-smallcap
-                            span Rename
+                            span.document-dropdown-item-text Rename
                         li.document-dropdown-item
                             i.ti-trash
-                            span Remove
+                            span.document-dropdown-item-text Remove
                         li.document-dropdown-item
                             i.ti-new-window
-                            span Open in new tab
-mixin popup(title, desc, cancel, confirm, hasInput= false)
+                            span.document-dropdown-item-text Open in new tab
+mixin popup(title, desc, cancel, confirm, hasInput= false, hasDontSave= false)
     .popup 
         .popup-container 
             h3.popup-title= title 
@@ -30,6 +30,6 @@ mixin popup(title, desc, cancel, confirm, hasInput= false)
                 input.popup-input(type="text")
             .popup-btn-group 
                 button.popup-cancel= cancel
-                if !hasInput 
+                if hasDontSave 
                     button.popup-no Don't Save 
                 button.popup-confirm= confirm

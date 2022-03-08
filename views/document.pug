@@ -10,10 +10,21 @@ section.document
                     .document-setting 
                         span.document-view
                             i.ti-view-list-alt
-                        span.document-sort
-                            i.ti-layout-list-thumb
+                        .dropdown 
+                            span.document-sort
+                                i.ti-filter
+                            ul.dropdown-list
+                                li.dropdown-item
+                                    span.dropdown-item-text Last open by me
+                                li.dropdown-item
+                                    span.dropdown-item-text Last modified by me
+                                li.dropdown-item.title-sort
+                                    span.dropdown-item-text Title
                         span.document-folder
                             i.ti-folder
     .container
         .document-main 
+            .document-empty-notice
+                .document-empty-notice-title No text documents yet
+                .document-empty-notice-desc  Click + to create a new document.
             ul.document-list

@@ -22,6 +22,11 @@ window.onload = function () {
         const popupInput = $(".popup-input");
         const popupSave = $(".popup-save");
         const popupNo = $(".popup-no");
+        const documentSetting = $(".document-setting");
+        const documentSettingItems = $$(".dropdown-item");
+        const editTime = $(".edit-time");
+        const documentEmptyNotice = $(".document-empty-notice");
+        const popupRemove = $(".popup-remove");
 
         const sectionCreateHeight = sectionCreate.offsetHeight;
         const documentContainerTopHeight = documentContainerTop.offsetHeight;
@@ -29,16 +34,17 @@ window.onload = function () {
         let action = ADD_DOCS;
         let editIndex = 0;
         let updateTitleIndex = 0;
+        let removeIndex = 0;
 
         return {
-            insertDocument(title, desc, time) {
+            insertDocument(title, desc, openTime, editTime) {
                 let getLocalStorage = localStorage.getItem("Docs");
                 if (getLocalStorage == null) {
                     listDocs = [];
                 } else {
                     listDocs = JSON.parse(getLocalStorage);
                 }
-                listDocs.push({ title, desc, time });
+                listDocs.push({ title, desc, openTime, editTime });
                 localStorage.setItem("Docs", JSON.stringify(listDocs));
             },
             removeDocument(index) {
@@ -47,17 +53,19 @@ window.onload = function () {
                 listDocs.splice(index, 1);
                 localStorage.setItem("Docs", JSON.stringify(listDocs));
             },
-            editDocument(index, title, desc) {
+            editDocument(index, title, desc, editTime) {
                 let getLocalStorage = localStorage.getItem("Docs");
                 listDocs = JSON.parse(getLocalStorage);
                 listDocs[index].title = title;
                 listDocs[index].desc = desc;
+                listDocs[index].editTime = editTime;
                 localStorage.setItem("Docs", JSON.stringify(listDocs));
             },
-            updateTitle(index, title) {
+            updateTitle(index, title, editTime) {
                 let getLocalStorage = localStorage.getItem("Docs");
                 listDocs = JSON.parse(getLocalStorage);
                 listDocs[index].title = title;
+                listDocs[index].editTime = editTime;
                 localStorage.setItem("Docs", JSON.stringify(listDocs));
             },
             isDataChange(index) {
@@ -83,6 +91,13 @@ window.onload = function () {
             clearInputValue() {
                 titleInput.value = "";
                 tinyMCE.get("content").setContent("");
+            },
+            formatTime(time) {
+                if (moment() - time <= 86400000) {
+                    return time.format("LT");
+                } else {
+                    return time.format("ll");
+                }
             },
             handleEvents() {
                 // window scroll
@@ -111,6 +126,7 @@ window.onload = function () {
                     const body = document.body;
                     body.style.height = "";
                     body.style.overflowY = "";
+                    this.render();
                 };
                 editLogo.onclick = () => {
                     if (action === EDIT_DOCS && this.isDataChange(editIndex)) {
@@ -131,8 +147,15 @@ window.onload = function () {
                     action = ADD_DOCS;
                 };
                 const openEditDocument = (index) => {
+                    let getLocalStorage = localStorage.getItem("Docs");
+                    listDocs = JSON.parse(getLocalStorage);
                     titleInput.value = listDocs[index].title;
+                    editTime.textContent = `Last edit was ${moment(
+                        listDocs[index].editTime
+                    ).fromNow()}`;
                     tinyMCE.get("content").setContent(listDocs[index].desc);
+                    listDocs[index].openTime = moment();
+                    localStorage.setItem("Docs", JSON.stringify(listDocs));
                     handleOpenEditSection();
                 };
 
@@ -143,18 +166,18 @@ window.onload = function () {
                             ? "Untitled document"
                             : titleInput.value.trim();
                     let desc = tinyMCE.get("content").getContent().trim();
-                    let time = "Opened Mar 1, 2022";
+                    let openTime = moment();
+                    let editTime = moment();
 
                     if (action === ADD_DOCS) {
-                        this.insertDocument(title, desc, time);
+                        this.insertDocument(title, desc, openTime, editTime);
                     } else if (action === EDIT_DOCS) {
-                        this.editDocument(editIndex, title, desc);
+                        this.editDocument(editIndex, title, desc, editTime);
                     }
 
                     popupSave.classList.remove("open-popup");
                     handleCloseEditSection();
                     this.clearInputValue();
-                    this.render();
                 };
 
                 // handle click on document list
@@ -164,9 +187,9 @@ window.onload = function () {
                         ".document-item-remove"
                     );
                     if (removeItem) {
-                        let index = removeItem.getAttribute("data-index");
-                        this.removeDocument(index);
-                        this.render();
+                        // open popup remove
+                        let removeIndex = removeItem.getAttribute("data-index");
+                        popupRemove.classList.add("open-popup");
                     }
 
                     // handle rename
@@ -212,6 +235,9 @@ window.onload = function () {
                 popupCancel[1].onclick = () => {
                     popupSave.classList.remove("open-popup");
                 };
+                popupCancel[2].onclick = () => {
+                    popupRemove.classList.remove("open-popup");
+                };
 
                 popupConfirm[0].onclick = () => {
                     if (popupInput.value.trim() !== "") {
@@ -233,6 +259,33 @@ window.onload = function () {
                     handleCloseEditSection();
                     this.clearInputValue();
                 };
+
+                popupConfirm[2].onclick = () => {
+                    this.removeDocument(removeIndex);
+                    popupRemove.classList.remove("open-popup");
+                    this.render();
+                };
+
+                documentSetting.onclick = (e) => {
+                    const titleSort = e.target.closest(".title-sort");
+                    if (titleSort) {
+                        let getLocalStorage = localStorage.getItem("Docs");
+                        listDocs = JSON.parse(getLocalStorage);
+                        listDocs.sort(function (a, b) {
+                            return a.title.localeCompare(b.title);
+                        });
+                        localStorage.setItem("Docs", JSON.stringify(listDocs));
+                        this.render();
+                    }
+                };
+                documentSettingItems.forEach((item) => {
+                    item.onclick = () => {
+                        documentSettingItems.forEach((element) => {
+                            element.classList.remove("active");
+                        });
+                        item.classList.add("active");
+                    };
+                });
             },
             render() {
                 let getLocalStorage = localStorage.getItem("Docs");
@@ -252,12 +305,14 @@ window.onload = function () {
                                 <p class="document-item-title">${docs.title}</p>
                                 <div class="document-item-bottom">
                                     <div class="document-item-icon"><img src="./images/docs_icon.png" alt="" /></div>
-                                    <p class="document-item-time">${docs.time}</p>
+                                    <p class="document-item-time">Opened ${this.formatTime(
+                                        moment(docs.openTime)
+                                    )}</p>
                                     <div class="document-dropdown"><span class="document-item-more"><i class="ti-more"></i></span>
                                         <ul class="document-dropdown-list">
-                                            <li class="document-dropdown-item document-item-rename" data-index="${index}"><i class="ti-smallcap"></i><span>Rename</span></li>
-                                            <li class="document-dropdown-item document-item-remove" data-index="${index}"><i class="ti-trash"></i><span>Remove</span></li>
-                                            <li class="document-dropdown-item document-item-open" data-index="${index}"><i class="ti-new-window"></i><span>Open in new tab</span></li>
+                                            <li class="document-dropdown-item document-item-rename" data-index="${index}"><i class="ti-smallcap"></i><span class="document-dropdown-item-text">Rename</span></li>
+                                            <li class="document-dropdown-item document-item-remove" data-index="${index}"><i class="ti-trash"></i><span class="document-dropdown-item-text">Remove</span></li>
+                                            <li class="document-dropdown-item document-item-open" data-index="${index}"><i class="ti-new-window"></i><span class="document-dropdown-item-text">Open in new tab</span></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -266,6 +321,11 @@ window.onload = function () {
                         `
                 );
                 documentList.innerHTML = htmls.join("");
+                if (listDocs.length === 0) {
+                    documentEmptyNotice.classList.add("show");
+                } else {
+                    documentEmptyNotice.classList.remove("show");
+                }
             },
             init() {
                 this.render();

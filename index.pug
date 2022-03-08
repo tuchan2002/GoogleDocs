@@ -17,11 +17,14 @@ html(lang="en")
             .add-btn 
                 img(src="./images/plus.png", alt="")
             .popup-rename
-                +popup('Rename','Please enter a new name for the item:','Cancel','OK', true)
+                +popup('Rename','Please enter a new name for the item:','Cancel','OK', true, false)
             include ./views/header
             include ./views/create
             include ./views/document
             include ./views/edit
+            .popup-remove 
+                +popup('Remove','Are you sure you want to delete this doc?','Cancel','Delete', false, false)
 
         script(src="./js/tinymce.js") 
+        script(src="./lib/moment/moment.min.js") 
         script(src="./js/app.js") 

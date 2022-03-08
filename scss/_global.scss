@@ -122,3 +122,41 @@ body::-webkit-scrollbar {
 .open-popup .popup .popup-container {
     transform: translate(-50%, -50%) scale(1);
 }
+
+.dropdown {
+    position: relative;
+    &-list {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transform: translate(-38%, 103%);
+        background-color: #fff;
+        padding: 8px 0;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 10;
+        transition: all 0.3s linear;
+    }
+    &-item {
+        padding: 10px 30px 10px 20px;
+        font-size: 20px;
+        white-space: nowrap;
+        color: $gray;
+        &-text {
+            font-size: 15px;
+        }
+        &:hover {
+            background-color: $gray-light;
+        }
+    }
+    &-item.active {
+        color: #000;
+        font-weight: 600;
+    }
+    &:hover &-list {
+        opacity: 1;
+        visibility: visible;
+    }
+}

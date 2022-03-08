@@ -36,7 +36,7 @@
     }
     &-setting {
         @include flex-align-center(12px);
-        span {
+        & > * {
             @include flex-center;
             @include circle(40px);
             font-size: 18px;
@@ -100,7 +100,7 @@
             gap: 8px;
         }
         &-time {
-            font-size: 13px;
+            font-size: 12px;
             color: $gray;
             margin-right: auto;
         }
@@ -142,7 +142,7 @@
             padding: 10px 30px 10px 20px;
             font-size: 20px;
             white-space: nowrap;
-            span {
+            &-text {
                 font-size: 14px;
             }
             &:hover {
@@ -153,5 +153,22 @@
             opacity: 1;
             visibility: visible;
         }
+    }
+    &-empty-notice {
+        display: none;
+        text-align: center;
+        padding: 36px 20px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        border-radius: 4px;
+        &-title {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+        &-desc {
+            color: $gray;
+        }
+    }
+    &-empty-notice.show {
+        display: block;
     }
 }

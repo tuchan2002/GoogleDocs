@@ -5,7 +5,14 @@ section.edit
                 img(src="./images/logo.png", alt="")
             .edit-info 
                 input.edit-title(type="text", placeholder="Untitled document")
-                p.edit-time Last edit was yesterday at 5:39 PM
+                .edit-action 
+                    span.edit-action-item 
+                        i.ti-star
+                    span.edit-action-item 
+                        i.ti-cloud-down
+                    span.edit-action-item 
+                        i.ti-info-alt
+            p.edit-time
         .edit-right 
             span.edit-history
                 i.ti-comment-alt
@@ -18,4 +25,4 @@ section.edit
         .container 
             textarea.edit-content#content
     .popup-save 
-        +popup('Save','Do you want to save this document?','Cancel','OK')
+        +popup('Save','Do you want to save this document?','Cancel','OK', false, true)
