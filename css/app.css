@@ -191,6 +191,82 @@ body::-webkit-scrollbar {
   transform: translate(-50%, -50%) scale(1);
 }
 
+.popup-detail-main {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 10000;
+  transition: all 0.3s ease;
+}
+.popup-detail-container {
+  position: absolute;
+  border-radius: 8px;
+  padding: 32px 24px;
+  background-color: #fff;
+  width: 370px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
+  transition: all 0.3s ease;
+}
+.popup-detail-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.popup-detail-close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 100rem;
+  font-size: 12px;
+  transition: all 0.2s linear;
+}
+.popup-detail-close:hover {
+  cursor: pointer;
+  background-color: #e3e5e6;
+}
+.popup-detail-title {
+  font-weight: 400;
+  font-size: 20px;
+}
+.popup-detail-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  font-size: 14px;
+}
+.popup-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.popup-detail-field {
+  font-weight: 500;
+  min-width: 120px;
+}
+.popup-detail-location > i {
+  margin-right: 6px;
+}
+
+.open-popup .popup-detail-main {
+  opacity: 1;
+  visibility: visible;
+}
+
+.open-popup .popup-detail-main .popup-detail-container {
+  transform: translate(-50%, -50%) scale(1);
+}
+
 .dropdown {
   position: relative;
 }
@@ -622,7 +698,7 @@ body::-webkit-scrollbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px;
+  padding: 10px 16px;
   position: relative;
 }
 .edit-top::after {
@@ -636,7 +712,7 @@ body::-webkit-scrollbar {
 .edit-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 4px;
 }
 .edit-time {
   margin-top: auto;
@@ -645,13 +721,20 @@ body::-webkit-scrollbar {
   font-size: 15px;
 }
 .edit-logo {
-  width: 40px;
+  width: 56px;
+  height: 56px;
+  border-radius: 100rem;
+  padding: 8px;
+  transition: all 0.2s linear;
+}
+.edit-logo:hover {
+  background-color: #e3e5e6;
 }
 .edit-title {
   font-size: 18px;
   border-radius: 2px;
   padding: 0 12px 0 4px;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   width: 320px;
 }
 .edit-title:hover {
@@ -676,6 +759,10 @@ body::-webkit-scrollbar {
 }
 .edit-action-item:hover {
   background-color: #f1f3f4;
+}
+.edit-action-detail.disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 .edit-right {
   display: flex;

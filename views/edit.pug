@@ -10,7 +10,7 @@ section.edit
                         i.ti-star
                     span.edit-action-item 
                         i.ti-cloud-down
-                    span.edit-action-item 
+                    span.edit-action-item.edit-action-detail 
                         i.ti-info-alt
             p.edit-time
         .edit-right 
@@ -26,3 +26,27 @@ section.edit
             textarea.edit-content#content
     .popup-save 
         +popup('Save','Do you want to save this document?','Cancel','OK', false, true)
+    .popup-detail
+        .popup-detail-main 
+            .popup-detail-container 
+                .popup-detail-top 
+                    h3.popup-detail-title Document details
+                    span.popup-detail-close     
+                        i.ti-close
+                ul.popup-detail-list 
+                    li.popup-detail-item  
+                        p.popup-detail-field Location 
+                        p.popup-detail-location
+                            i.ti-folder 
+                            span My Driver
+                    li.popup-detail-item
+                        p.popup-detail-field Owner 
+                        p me 
+                    li.popup-detail-item  
+                        p.popup-detail-field Modified
+                        p.popup-detail-edit-time 11:04 AM by me
+                    li.popup-detail-item  
+                        p.popup-detail-field Created
+                        p.popup-detail-create-time 11:04 AM
+
+                

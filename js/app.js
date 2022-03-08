@@ -27,6 +27,11 @@ window.onload = function () {
         const editTime = $(".edit-time");
         const documentEmptyNotice = $(".document-empty-notice");
         const popupRemove = $(".popup-remove");
+        const popupDetailClose = $(".popup-detail-close");
+        const popupDetail = $(".popup-detail");
+        const editActionDetail = $(".edit-action-detail");
+        const popupDetailEditTime = $(".popup-detail-edit-time");
+        const popupDetailCreateTime = $(".popup-detail-create-time");
 
         const sectionCreateHeight = sectionCreate.offsetHeight;
         const documentContainerTopHeight = documentContainerTop.offsetHeight;
@@ -37,14 +42,14 @@ window.onload = function () {
         let removeIndex = 0;
 
         return {
-            insertDocument(title, desc, openTime, editTime) {
+            insertDocument(title, desc, openTime, editTime, createTime) {
                 let getLocalStorage = localStorage.getItem("Docs");
                 if (getLocalStorage == null) {
                     listDocs = [];
                 } else {
                     listDocs = JSON.parse(getLocalStorage);
                 }
-                listDocs.push({ title, desc, openTime, editTime });
+                listDocs.push({ title, desc, openTime, editTime, createTime });
                 localStorage.setItem("Docs", JSON.stringify(listDocs));
             },
             removeDocument(index) {
@@ -141,10 +146,12 @@ window.onload = function () {
                 createItemBlank.onclick = () => {
                     handleOpenEditSection();
                     action = ADD_DOCS;
+                    editActionDetail.classList.add("disabled");
                 };
                 addBtn.onclick = () => {
                     handleOpenEditSection();
                     action = ADD_DOCS;
+                    editActionDetail.classList.add("disabled");
                 };
                 const openEditDocument = (index) => {
                     let getLocalStorage = localStorage.getItem("Docs");
@@ -155,8 +162,15 @@ window.onload = function () {
                     ).fromNow()}`;
                     tinyMCE.get("content").setContent(listDocs[index].desc);
                     listDocs[index].openTime = moment();
+                    popupDetailEditTime.textContent = `${this.formatTime(
+                        moment(listDocs[index].editTime)
+                    )} by me`;
+                    popupDetailCreateTime.textContent = this.formatTime(
+                        moment(listDocs[index].createTime)
+                    );
                     localStorage.setItem("Docs", JSON.stringify(listDocs));
                     handleOpenEditSection();
+                    editActionDetail.classList.remove("disabled");
                 };
 
                 // handle insert docs
@@ -168,9 +182,16 @@ window.onload = function () {
                     let desc = tinyMCE.get("content").getContent().trim();
                     let openTime = moment();
                     let editTime = moment();
+                    let createTime = moment();
 
                     if (action === ADD_DOCS) {
-                        this.insertDocument(title, desc, openTime, editTime);
+                        this.insertDocument(
+                            title,
+                            desc,
+                            openTime,
+                            editTime,
+                            createTime
+                        );
                     } else if (action === EDIT_DOCS) {
                         this.editDocument(editIndex, title, desc, editTime);
                     }
@@ -286,6 +307,13 @@ window.onload = function () {
                         item.classList.add("active");
                     };
                 });
+
+                editActionDetail.onclick = () => {
+                    popupDetail.classList.add("open-popup");
+                };
+                popupDetailClose.onclick = () => {
+                    popupDetail.classList.remove("open-popup");
+                };
             },
             render() {
                 let getLocalStorage = localStorage.getItem("Docs");

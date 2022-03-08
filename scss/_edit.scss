@@ -14,7 +14,7 @@
     }
     &-top {
         @include flex-align-center-between;
-        padding: 12px;
+        padding: 10px 16px;
         position: relative;
         &::after {
             content: '';
@@ -26,7 +26,7 @@
         }
     }
     &-left {
-        @include flex-align-center(12px);
+        @include flex-align-center(4px);
     }
     &-time {
         margin-top: auto;
@@ -35,13 +35,18 @@
         font-size: 15px;
     }
     &-logo {
-        width: 40px;
+        @include circle(56px);
+        padding: 8px;
+        transition: all 0.2s linear;
+        &:hover {
+            background-color: $gray-blur;
+        }
     }
     &-title {
         font-size: 18px;
         border-radius: 2px;
         padding: 0 12px 0 4px;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
         width: 320px;
         &:hover {
             outline: 1px solid rgba(0, 0, 0, 0.2);
@@ -62,6 +67,10 @@
                 background-color: $gray-light;
             }
         }
+        &-detail.disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        } 
     }
     &-right {
         @include flex-align-center(28px);

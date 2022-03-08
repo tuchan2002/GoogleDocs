@@ -123,6 +123,72 @@ body::-webkit-scrollbar {
     transform: translate(-50%, -50%) scale(1);
 }
 
+.popup-detail {
+    &-main {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.55);
+        opacity: 0;
+        visibility: hidden;
+        z-index: 10000;
+        transition: all 0.3s ease;
+    }
+    &-container {
+        position: absolute;
+        border-radius: 8px;
+        padding: 32px 24px;
+        background-color: #fff;
+        width: 370px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.2);
+        transition: all 0.3s ease;
+    }
+    &-top {
+        @include flex-align-center-between;
+        margin-bottom: 24px;
+    }
+    &-close {
+        @include flex-center;
+        @include circle(30px);
+        font-size: 12px;
+        transition: all 0.2s linear;
+        &:hover {
+            cursor: pointer;
+            background-color: $gray-blur;
+        }
+    }
+    &-title {
+        font-weight: 400;
+        font-size: 20px;
+    }
+    &-list {
+        @include flex-column-justify-center(24px);
+        font-size: 14px
+    }
+    &-item {
+        @include flex-align-center(0);
+    }
+    &-field {
+        font-weight: 500;
+        min-width: 120px;
+    }
+    &-location > i {
+        margin-right: 6px;
+    }
+}
+
+.open-popup .popup-detail-main {
+    opacity: 1;
+    visibility: visible;
+}
+.open-popup .popup-detail-main .popup-detail-container {
+    transform: translate(-50%, -50%) scale(1);
+}
+
 .dropdown {
     position: relative;
     &-list {
