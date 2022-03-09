@@ -1,5 +1,5 @@
 .document {
-    padding-bottom: 70px;
+    padding-bottom: 72px;
     background-color: #fff;
     &-container-top {
         background-color: #fff;
@@ -170,5 +170,15 @@
     }
     &-empty-notice.show {
         display: block;
+    }
+    @media screen and (max-width: 1023px) {
+        &-list {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    @media screen and (max-width: 767px) {
+        &-list {
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
 }
