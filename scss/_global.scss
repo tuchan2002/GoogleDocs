@@ -11,7 +11,7 @@ body::-webkit-scrollbar {
 .wrapper {
     max-width: 1492px;
     margin: 0 auto;
-    position: relative;
+    overflow: hidden;
 }
 
 .container {
@@ -40,7 +40,7 @@ body::-webkit-scrollbar {
 }
 
 .popup {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
@@ -127,7 +127,7 @@ body::-webkit-scrollbar {
 
 .popup-detail {
     &-main {
-        position: absolute;
+        position: fixed;
         top: 0;
         right: 0;
         bottom: 0;
