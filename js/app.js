@@ -140,7 +140,11 @@ window.onload = function () {
             },
             sortDocuments(compareFunction) {
                 let getLocalStorage = localStorage.getItem("Docs");
-                listDocs = JSON.parse(getLocalStorage);
+                if (getLocalStorage == null) {
+                    listDocs = [];
+                } else {
+                    listDocs = JSON.parse(getLocalStorage);
+                }
                 listDocs.sort(compareFunction);
                 localStorage.setItem("Docs", JSON.stringify(listDocs));
             },
