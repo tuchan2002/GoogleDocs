@@ -4,6 +4,11 @@ window.onload = function () {
     const ADD_DOCS = "add";
     const EDIT_DOCS = "edit";
 
+    const CREATE_TIME_SORT = "create-time-sort";
+    const OPEN_TIME_SORT = "open-time-sort";
+    const EDIT_TIME_SORT = "edit-time-sort";
+    const TITLE_SORT = "title-sort";
+
     const app = (function () {
         const sectionHeader = $(".header");
         const sectionCreate = $(".create");
@@ -41,6 +46,7 @@ window.onload = function () {
         let editIndex = 0;
         let updateTitleIndex = 0;
         let removeIndex = 0;
+        let statusSort = CREATE_TIME_SORT;
 
         return {
             insertDocument(title, desc, openTime, editTime, createTime) {
@@ -120,6 +126,44 @@ window.onload = function () {
                 let filename = listDocs[index].title + ".html";
                 let content = listDocs[index].desc;
                 this.downloadDocument(filename, content);
+            },
+            handleSortDocuments() {
+                if (statusSort === CREATE_TIME_SORT) {
+                    this.sortDocuments(this.compareByCreateTime);
+                } else if (statusSort === EDIT_TIME_SORT) {
+                    this.sortDocuments(this.compareByEditTime);
+                } else if (statusSort === OPEN_TIME_SORT) {
+                    this.sortDocuments(this.compareByOpenTime);
+                } else if (statusSort === TITLE_SORT) {
+                    this.sortDocuments(this.compareByTitle);
+                }
+            },
+            sortDocuments(compareFunction) {
+                let getLocalStorage = localStorage.getItem("Docs");
+                listDocs = JSON.parse(getLocalStorage);
+                listDocs.sort(compareFunction);
+                localStorage.setItem("Docs", JSON.stringify(listDocs));
+            },
+            compareByTitle(a, b) {
+                return a.title.localeCompare(b.title);
+            },
+            compareByEditTime(a, b) {
+                let res = moment(a.editTime).isBefore(moment(b.editTime))
+                    ? 1
+                    : -1;
+                return res;
+            },
+            compareByOpenTime(a, b) {
+                let res = moment(a.openTime).isBefore(moment(b.openTime))
+                    ? 1
+                    : -1;
+                return res;
+            },
+            compareByCreateTime(a, b) {
+                let res = moment(a.createTime).isAfter(moment(b.createTime))
+                    ? 1
+                    : -1;
+                return res;
             },
             handleEvents() {
                 // window scroll
@@ -317,12 +361,28 @@ window.onload = function () {
                 documentSetting.onclick = (e) => {
                     const titleSort = e.target.closest(".title-sort");
                     if (titleSort) {
-                        let getLocalStorage = localStorage.getItem("Docs");
-                        listDocs = JSON.parse(getLocalStorage);
-                        listDocs.sort(function (a, b) {
-                            return a.title.localeCompare(b.title);
-                        });
-                        localStorage.setItem("Docs", JSON.stringify(listDocs));
+                        statusSort = TITLE_SORT;
+                        this.render();
+                    }
+
+                    const lastOpenSort = e.target.closest(".last-open-sort");
+                    if (lastOpenSort) {
+                        statusSort = OPEN_TIME_SORT;
+                        this.render();
+                    }
+
+                    const lastModifiedSort = e.target.closest(
+                        ".last-modified-sort"
+                    );
+                    if (lastModifiedSort) {
+                        statusSort = EDIT_TIME_SORT;
+                        this.render();
+                    }
+
+                    const firstCreateSort =
+                        e.target.closest(".first-create-sort");
+                    if (firstCreateSort) {
+                        statusSort = CREATE_TIME_SORT;
                         this.render();
                     }
                 };
@@ -343,6 +403,7 @@ window.onload = function () {
                 };
             },
             render() {
+                this.handleSortDocuments();
                 let getLocalStorage = localStorage.getItem("Docs");
                 if (getLocalStorage == null) {
                     listDocs = [];
