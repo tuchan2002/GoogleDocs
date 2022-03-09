@@ -32,6 +32,7 @@ window.onload = function () {
         const editActionDetail = $(".edit-action-detail");
         const popupDetailEditTime = $(".popup-detail-edit-time");
         const popupDetailCreateTime = $(".popup-detail-create-time");
+        const hiddenDownloadBtn = $("#hidden-download-btn");
 
         const sectionCreateHeight = sectionCreate.offsetHeight;
         const documentContainerTopHeight = documentContainerTop.offsetHeight;
@@ -103,6 +104,22 @@ window.onload = function () {
                 } else {
                     return time.format("ll");
                 }
+            },
+            downloadDocument(filename, content) {
+                hiddenDownloadBtn.setAttribute(
+                    "href",
+                    "data:text/plain;charset=utf-8," +
+                        encodeURIComponent(content)
+                );
+                hiddenDownloadBtn.setAttribute("download", filename);
+                hiddenDownloadBtn.click();
+            },
+            handleDownloadDocument(index) {
+                let getLocalStorage = localStorage.getItem("Docs");
+                listDocs = JSON.parse(getLocalStorage);
+                let filename = listDocs[index].title + ".html";
+                let content = listDocs[index].desc;
+                this.downloadDocument(filename, content);
             },
             handleEvents() {
                 // window scroll
@@ -247,6 +264,16 @@ window.onload = function () {
                         openEditDocument(editIndex);
                         action = EDIT_DOCS;
                     }
+
+                    // handle click download
+                    const downloadItem = e.target.closest(
+                        ".document-item-download"
+                    );
+                    if (downloadItem) {
+                        let downloadIndex =
+                            downloadItem.getAttribute("data-index");
+                        this.handleDownloadDocument(downloadIndex);
+                    }
                 };
 
                 // close popup
@@ -341,6 +368,7 @@ window.onload = function () {
                                             <li class="document-dropdown-item document-item-rename" data-index="${index}"><i class="ti-smallcap"></i><span class="document-dropdown-item-text">Rename</span></li>
                                             <li class="document-dropdown-item document-item-remove" data-index="${index}"><i class="ti-trash"></i><span class="document-dropdown-item-text">Remove</span></li>
                                             <li class="document-dropdown-item document-item-open" data-index="${index}"><i class="ti-new-window"></i><span class="document-dropdown-item-text">Open in new tab</span></li>
+                                            <li class="document-dropdown-item document-item-download" data-index="${index}"><i class="ti-cloud-down"></i><span class="document-dropdown-item-text">Download</span></li>
                                         </ul>
                                     </div>
                                 </div>
