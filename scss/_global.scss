@@ -9,7 +9,7 @@ body::-webkit-scrollbar {
 }
 
 .wrapper {
-    max-width: 1492px;
+    max-width: 1600px;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -54,7 +54,7 @@ body::-webkit-scrollbar {
         @include flex-column-justify-center(26px);
         position: absolute;
         border-radius: 8px;
-        padding: 30px 42px;
+        padding: 28px 38px;
         background-color: #fff;
         width: 430px;
         top: 50%;
@@ -114,6 +114,24 @@ body::-webkit-scrollbar {
         cursor: pointer;
         &:hover {
             color: $gray;
+        }
+    }
+    @media screen and (max-width: 575px) {
+        &-container {
+            padding: 20px 16px;
+            width: 330px;
+        }
+        &-desc {
+            font-size: 14px;
+        }
+        &-cancel {
+            padding: 11px 8px;
+        }
+        &-confirm {
+            padding: 11px 22px;
+        }
+        &-no {
+            padding: 11px 5px;
         }
     }
 }
@@ -181,6 +199,12 @@ body::-webkit-scrollbar {
     &-location > i {
         margin-right: 6px;
     }
+    @media screen and (max-width: 575px) {
+        &-container {
+            padding: 20px 16px;
+            width: 330px;
+        }
+    }
 }
 
 .open-popup .popup-detail-main {
@@ -195,9 +219,9 @@ body::-webkit-scrollbar {
     position: relative;
     &-list {
         position: absolute;
-        left: 0;
-        bottom: 0;
-        transform: translate(-38%, 103%);
+        right: 0;
+        top: 0;
+        transform: translate(12%, 25%);
         background-color: #fff;
         padding: 8px 0;
         border-radius: 5px;

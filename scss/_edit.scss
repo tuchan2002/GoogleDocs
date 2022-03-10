@@ -17,7 +17,7 @@
         padding: 10px 16px;
         position: relative;
         &::after {
-            content: '';
+            content: "";
             position: absolute;
             left: 0;
             right: 0;
@@ -29,10 +29,10 @@
         @include flex-align-center(4px);
     }
     &-time {
-        margin-top: auto;
         color: $gray;
         text-decoration: underline;
-        font-size: 15px;
+        font-size: 14px;
+        margin-left: 4px;
     }
     &-logo {
         @include circle(56px);
@@ -47,7 +47,7 @@
         border-radius: 2px;
         padding: 0 12px 0 4px;
         margin-bottom: 4px;
-        width: 320px;
+        width: 260px;
         &:hover {
             outline: 1px solid rgba(0, 0, 0, 0.2);
         }
@@ -56,33 +56,22 @@
         }
     }
     &-action {
-        @include flex-align-center(20px);
-        font-size: 17px;
-        &-item {
-            @include flex-center;
-            padding: 4px;
-            border-radius: 5px;
-            cursor: pointer;
-            &:hover {
-                background-color: $gray-light;
-            }
-        }
         &-detail.disabled {
             pointer-events: none;
             opacity: 0.5;
-        } 
+        }
     }
     &-right {
         @include flex-align-center(28px);
     }
     &-save {
         border-radius: 4px;
-        height: 36px;
+        height: 40px;
         background-color: $blue;
         padding: 9px 18px 10px 14px;
         color: #fff;
-        @include flex-align-center(8px);
-        font-size: 14px;
+        @include flex-align-center(10px);
+        font-size: 15px;
         font-weight: 500;
         cursor: pointer;
         &:hover {
@@ -90,7 +79,7 @@
         }
     }
     &-avatar {
-        @include circle(40px);
+        @include circle(50px);
         padding: 3px;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
         cursor: pointer;
@@ -99,14 +88,99 @@
             object-fit: cover;
         }
     }
-    &-history {
-        @include flex-center;
-        @include circle(42px);
-        font-size: 20px;
+    &-toggle {
+        @include circle(45px);
+        display: none;
+        font-size: 25px;
+        color: $gray;
         transition: background-color 0.2s linear;
         &:hover {
             cursor: pointer;
             background-color: $gray-blur;
+        }
+    }
+    @media screen and (max-width: 1023px) {
+        &-main-container {
+            padding: 0;
+        }
+    }
+    @media screen and (min-width: 768px) {
+        &-action {
+            @include flex-align-center(10px);
+            font-size: 20px;
+            margin-top: auto;
+            &-item {
+                @include flex-center;
+                @include circle(44px);
+                font-size: 24px;
+                transition: background-color 0.2s linear;
+                &:hover {
+                    cursor: pointer;
+                    background-color: $gray-blur;
+                }
+                &-text {
+                    display: none;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 767px) {
+        &-toggle {
+            @include flex-center;
+        }
+        &-avatar {
+            @include circle(66px);
+            align-self: center;
+        }
+        &-right {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 20px;
+            justify-content: start;
+            align-items: stretch;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 75%;
+            max-width: 450px;
+            background-color: #fff;
+            border-left: 1px solid $gray-blur;
+            padding: 12px 20px;
+            z-index: 1000000;
+            transition: transform 0.25s linear;
+            transform: translateX(100%);
+        }
+        &-right.active {
+            transform: translateX(0);
+        }
+        &-action {
+            @include flex-column-justify-center(4px);
+            &-item {
+                @include flex-align-center(20px);
+                font-size: 24px;
+                padding: 12px;
+                border-radius: 6px;
+                transition: background-color 0.2s linear;
+                &:hover {
+                    background-color: $gray-blur;
+                }
+                &-text {
+                    display: block;
+                    font-size: 16px;
+                }
+            }
+        }
+        &-save {
+            display: none;
+        }
+    }
+    @media screen and (max-width: 575px) {
+        &-title {
+            width: 200px;
+        }
+        &-top {
+            padding: 10px 8px;
         }
     }
 }

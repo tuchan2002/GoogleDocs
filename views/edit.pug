@@ -5,22 +5,27 @@ section.edit
                 img(src="./images/logo_edit.png", alt="")
             .edit-info 
                 input.edit-title(type="text", placeholder="Untitled document")
-                .edit-action 
-                    span.edit-action-item 
-                        i.ti-star
-                    span.edit-action-item.edit-action-detail 
-                        i.ti-info-alt
-            p.edit-time
+                p.edit-time
         .edit-right 
-            span.edit-history
-                i.ti-comment-alt
+            .edit-action 
+                p.edit-action-item 
+                    i.ti-star
+                    span.edit-action-item-text  Star
+                p.edit-action-item.edit-action-detail 
+                    i.ti-info-alt
+                    span.edit-action-item-text Document details
+                p.edit-action-item 
+                    i.ti-comment-alt
+                    span.edit-action-item-text Edit history
             .edit-save 
                 i.ti-save
                 span Save
             .edit-avatar 
-                img(src="https://i.pinimg.com/564x/d5/b0/4c/d5b04cc3dcd8c17702549ebc5f1acf1a.jpg", alt="")
+                img(src="https://i.pinimg.com/564x/78/8b/f4/788bf4a85b153a50f986792a0d63e7a6.jpg", alt="")
+        .edit-toggle 
+            i.ti-menu
     .edit-main 
-        .container 
+        .container.edit-main-container
             textarea.edit-content#content
     .popup-save 
         +popup('Save','Do you want to save this document?','Cancel','OK', false, true)

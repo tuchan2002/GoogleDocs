@@ -10,7 +10,12 @@ window.onload = function () {
     const TITLE_SORT = "title-sort";
 
     const app = (function () {
+        const wrapper = $(".wrapper");
         const sectionHeader = $(".header");
+        const headerMenu = $(".header-menu");
+        const menuToggle = $(".header-toggle");
+        const editRight = $(".edit-right");
+        const editToggle = $(".edit-toggle");
         const sectionCreate = $(".create");
         const documentContainerTop = $(".document-container-top");
         const documentMain = $(".document-main");
@@ -170,6 +175,30 @@ window.onload = function () {
                 return res;
             },
             handleEvents() {
+                // header toggle
+                menuToggle.onclick = () => {
+                    headerMenu.classList.add("active");
+                };
+
+                // edit toggle
+                editToggle.onclick = () => {
+                    editRight.classList.add("active");
+                };
+                document.onclick = (e) => {
+                    if (
+                        !editRight.contains(e.target) &&
+                        !e.target.closest(".edit-toggle")
+                    ) {
+                        editRight.classList.remove("active");
+                    }
+                    if (
+                        !headerMenu.contains(e.target) &&
+                        !e.target.closest(".header-toggle")
+                    ) {
+                        headerMenu.classList.remove("active");
+                    }
+                };
+
                 // window scroll
                 const handleScroll = () => {
                     if (window.scrollY >= sectionCreateHeight) {
@@ -400,6 +429,7 @@ window.onload = function () {
                 });
 
                 editActionDetail.onclick = () => {
+                    editRight.classList.remove("active");
                     popupDetail.classList.add("open-popup");
                 };
                 popupDetailClose.onclick = () => {

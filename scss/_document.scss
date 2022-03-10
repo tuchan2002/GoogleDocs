@@ -22,17 +22,7 @@
         font-weight: normal;
     }
     &-option {
-        @include flex-align-center(120px);
-    }
-    &-privacy {
-        @include flex-align-center(8px);
-        padding: 10px 15px;
-        transition: all 0.2s linear;
-        &:hover {
-            border-radius: 5px;
-            cursor: pointer;
-            background-color: #dee1e9;
-        }
+        @include flex-align-center(100px);
     }
     &-setting {
         @include flex-align-center(12px);
@@ -67,14 +57,14 @@
         &-preview {
             border-radius: 5px 5px 0 0;
             background-image: linear-gradient(#fff, #fafafa);
-            padding: 28px 20px 4px;
+            padding: 20px 12px 4px;
             font-size: 11px;
             line-height: 1.4;
             height: 200px;
             border-bottom: 1px solid $gray-blur;
             p {
                 display: -webkit-box;
-                -webkit-line-clamp: 10;
+                -webkit-line-clamp: 11;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -82,11 +72,12 @@
             }
         }
         &-info {
-            padding: 16px 20px 12px;
+            padding: 12px;
             position: relative;
         }
         &-title {
             padding-bottom: 4px;
+            line-height: 1.5;
             font-weight: 500;
             display: -webkit-box;
             -webkit-line-clamp: 1;
@@ -125,9 +116,9 @@
     &-dropdown {
         &-list {
             position: absolute;
-            left: 0;
+            right: 0;
             bottom: 0;
-            transform: translate(50%, -29%);
+            transform: translate(5%, -29%);
             background-color: #fff;
             padding: 8px 0;
             border-radius: 5px;
@@ -179,6 +170,47 @@
     @media screen and (max-width: 767px) {
         &-list {
             grid-template-columns: repeat(2, 1fr);
+        }
+        &-option {
+            gap: 32px;
+        }
+    }
+    @media screen and (max-width: 575px) {
+        &-list {
+            gap: 10px;
+        }
+        &-title {
+            font-size: 15px;
+        }
+        &-setting {
+            gap: 10px;
+        }
+        &-top {
+            padding-bottom: 0;
+        }
+        &-item {
+            &-title {
+                font-size: 14px;
+            }
+            &-preview {
+                padding: 16px 12px 4px;
+                height: 100px;
+                p {
+                    -webkit-line-clamp: 5;
+                }
+            }
+            &-time {
+                display: none;
+            }
+            &-info {
+                padding: 8px 12px 6px;
+            }
+        }
+        
+        &-dropdown {
+            &-item {
+                padding: 10px;
+            }
         }
     }
 }
