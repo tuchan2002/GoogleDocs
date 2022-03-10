@@ -693,9 +693,10 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 100rem;
+  font-size: 20px;
   transition: background-color 0.2s linear;
 }
 .document-item-more:hover {
@@ -766,7 +767,7 @@ body::-webkit-scrollbar {
 }
 @media screen and (max-width: 575px) {
   .document-list {
-    gap: 10px;
+    gap: 12px;
   }
   .document-title {
     font-size: 15px;
@@ -779,6 +780,7 @@ body::-webkit-scrollbar {
   }
   .document-item-title {
     font-size: 14px;
+    padding-bottom: 0;
   }
   .document-item-preview {
     padding: 16px 12px 4px;
@@ -791,7 +793,7 @@ body::-webkit-scrollbar {
     display: none;
   }
   .document-item-info {
-    padding: 8px 12px 6px;
+    padding: 12px 12px 6px;
   }
   .document-dropdown-item {
     padding: 10px;
