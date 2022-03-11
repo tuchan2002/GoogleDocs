@@ -297,6 +297,20 @@ window.onload = function () {
 
                 // handle click on document list
                 documentList.onclick = (e) => {
+                    const documentDropdown =
+                        e.target.closest(".document-dropdown");
+                    if (documentDropdown) {
+                        const documentDropdownTitle =
+                            documentDropdown.querySelector(
+                                ".document-dropdown-title"
+                            );
+                        const documentItemTitle = documentDropdown
+                            .closest(".document-item-info")
+                            .querySelector(".document-item-title");
+                        documentDropdownTitle.textContent =
+                            documentItemTitle.textContent;
+                    }
+
                     // handle remove docs
                     const removeItem = e.target.closest(
                         ".document-item-remove"
@@ -460,6 +474,10 @@ window.onload = function () {
                                     )}</p>
                                     <div class="document-dropdown"><span class="document-item-more"><i class="ti-more"></i></span>
                                         <ul class="document-dropdown-list">
+                                            <li class="document-dropdown-top"> 
+                                                <img src="./images/docs_icon.png" alt="" />
+                                                <p class="document-dropdown-title">React JS Basic</p>
+                                            </li>
                                             <li class="document-dropdown-item document-item-rename" data-index="${index}"><i class="ti-smallcap"></i><span class="document-dropdown-item-text">Rename</span></li>
                                             <li class="document-dropdown-item document-item-remove" data-index="${index}"><i class="ti-trash"></i><span class="document-dropdown-item-text">Remove</span></li>
                                             <li class="document-dropdown-item document-item-open" data-index="${index}"><i class="ti-new-window"></i><span class="document-dropdown-item-text">Open in new tab</span></li>

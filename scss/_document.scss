@@ -76,8 +76,7 @@
             position: relative;
         }
         &-title {
-            padding-bottom: 4px;
-            line-height: 1.5;
+            line-height: 1.25;
             font-weight: 500;
             display: -webkit-box;
             -webkit-line-clamp: 1;
@@ -101,6 +100,7 @@
             img {
                 width: 100%;
                 height: 100%;
+                object-fit: cover;
             }
         }
         &-more {
@@ -128,6 +128,9 @@
             visibility: hidden;
             z-index: 10;
             transition: all 0.3s linear;
+        }
+        &-top {
+            display: none;
         }
         &-item {
             @include flex-align-center(24px);
@@ -178,7 +181,8 @@
     }
     @media screen and (max-width: 575px) {
         &-list {
-            gap: 12px;
+            column-gap: 12px;
+            row-gap: 25px;
         }
         &-title {
             font-size: 15px;
@@ -191,8 +195,8 @@
         }
         &-item {
             &-title {
-                font-size: 14px;
-                padding-bottom: 0;
+                font-size: 15px;
+                text-align: center;
             }
             &-preview {
                 padding: 16px 12px 4px;
@@ -205,13 +209,46 @@
                 display: none;
             }
             &-info {
-                padding: 12px 12px 6px;
+                padding: 6px 12px 6px;
             }
         }
-        
+
         &-dropdown {
+            &-list {
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 8000;
+                padding: 8px 0;
+                border-radius: 25px 25px 0 0;
+                transform: translateY(100%);
+                transition: all 0.35s linear;
+            }
+            &-top {
+                @include flex-align-center(24px);
+                padding: 15px 30px;
+                border-bottom: 2px solid $gray-blur;
+                margin-bottom: 10px;
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+            &-title {
+                font-weight: 500;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                word-break: break-word;
+            }
             &-item {
-                padding: 10px;
+                padding: 15px 28px;
+            }
+            &:hover &-list {
+                transform: translateY(0);
             }
         }
     }
