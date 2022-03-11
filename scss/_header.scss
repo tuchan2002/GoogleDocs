@@ -20,12 +20,13 @@
         }
     }
     &-menu {
-        flex: 1;
+        flex: 2;
         @include flex-align-center-between;
     }
     &-logo {
         @include flex-align-center(8px);
         height: 48px;
+        width: 114px;
         img {
             width: 100%;
             height: 100%;
@@ -62,6 +63,12 @@
         img {
             @include circle(100%);
             object-fit: cover;
+        }
+    }
+    @media screen and (min-width: 1240px) {
+        gap: 0;
+        &-container-logo {
+            flex: 0.8;
         }
     }
     @media screen and (max-width: 1023px) {
