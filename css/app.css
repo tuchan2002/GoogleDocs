@@ -562,11 +562,17 @@ body::-webkit-scrollbar {
   margin-top: 4px;
 }
 @media screen and (max-width: 575px) {
+  .create {
+    padding-bottom: 10px;
+  }
   .create-template {
     display: none;
   }
   .create-title {
     font-size: 15px;
+  }
+  .create-list {
+    grid-auto-columns: 120px;
   }
 }
 
@@ -788,10 +794,10 @@ body::-webkit-scrollbar {
   }
   .document-item-preview {
     padding: 16px 12px 4px;
-    height: 100px;
+    height: 85px;
   }
   .document-item-preview p {
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 4;
   }
   .document-item-time {
     display: none;
