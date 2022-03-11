@@ -358,7 +358,7 @@ body::-webkit-scrollbar {
   background-color: #e3e5e6;
 }
 .header-menu {
-  flex: 2;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -368,7 +368,6 @@ body::-webkit-scrollbar {
   align-items: center;
   gap: 8px;
   height: 48px;
-  width: 114px;
 }
 .header-logo img {
   width: 100%;
@@ -416,14 +415,6 @@ body::-webkit-scrollbar {
   height: 100%;
   border-radius: 100rem;
   object-fit: cover;
-}
-@media screen and (min-width: 1240px) {
-  .header {
-    gap: 0;
-  }
-  .header-container-logo {
-    flex: 0.8;
-  }
 }
 @media screen and (max-width: 1023px) {
   .header {
